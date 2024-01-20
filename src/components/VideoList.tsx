@@ -11,9 +11,11 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
   const handleDeleteAll = () => {
     setVideoList([]);
   };
+
   useEffect(() => {
     setVideoList(videos);
   }, [videos]);
+
   return (
     <div>
       <h2>Lista de Vídeos</h2>
