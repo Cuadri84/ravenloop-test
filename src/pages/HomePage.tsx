@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
 
   const handleSearchResult = async (query: string) => {
     try {
-      const { channels, videos } = await searchChannelsAndVideos(query);
+      const { videos } = await searchChannelsAndVideos(query);
       setSearchResult(videos);
     } catch (error) {
       console.error("Error al obtener canales y videos:", error);

@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyAciD-uD4m9A6FaAa5bderD6XImEPxvMAw";
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
 export const searchChannelsAndVideos = async (
   query: string,

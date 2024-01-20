@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import md5 from "md5";
 
 interface VideoListProps {
@@ -6,11 +6,20 @@ interface VideoListProps {
 }
 
 const VideoList: React.FC<VideoListProps> = ({ videos }) => {
+  const [videoList, setVideoList] = useState(videos);
+
+  const handleDeleteAll = () => {
+    setVideoList([]);
+  };
+  useEffect(() => {
+    setVideoList(videos);
+  }, [videos]);
   return (
     <div>
       <h2>Lista de Vídeos</h2>
+      <button onClick={handleDeleteAll}>Borrar toda la lista</button>
       <ul>
-        {videos.map((video) => {
+        {videoList.map((video) => {
           console.log("Contenido del video:", video);
           const title = video.snippet.title;
           const publishedAt = video.snippet.publishedAt;
