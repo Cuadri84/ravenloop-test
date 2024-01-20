@@ -61,6 +61,13 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
       <h2>Lista de Vídeos</h2>
       <div>
         <button onClick={handleDeleteAll}>Borrar toda la lista</button>
+        <label>Ordenar por:</label>
+        <select onChange={(e) => handleSortChange(e.target.value)}>
+          <option value="dateDesc">Fecha Descendente</option>
+          <option value="dateAsc">Fecha Ascendente</option>
+          <option value="moreViews">Más Vistas</option>
+          <option value="lessViews">Menos Vistas</option>
+        </select>
       </div>
       <ul>
         {videoList.map((video) => {
