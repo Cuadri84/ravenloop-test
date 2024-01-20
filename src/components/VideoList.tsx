@@ -7,22 +7,70 @@ interface VideoListProps {
 
 const VideoList: React.FC<VideoListProps> = ({ videos }) => {
   const [videoList, setVideoList] = useState(videos);
+  const [sortOption, setSortOption] = useState<string>("dateDesc");
 
   const handleDeleteAll = () => {
     setVideoList([]);
   };
 
+  const handleSortChange = (option: string) => {
+    setSortOption(option);
+  };
+
   useEffect(() => {
-    setVideoList(videos);
-  }, [videos]);
+    let sortedVideos = [...videos];
+
+    switch (sortOption) {
+      case "dateDesc":
+        sortedVideos = sortedVideos.sort((a, b) => {
+          const dateA = new Date(a.snippet.publishedAt);
+          const dateB = new Date(b.snippet.publishedAt);
+          return dateB.getTime() - dateA.getTime();
+        });
+        break;
+      case "dateAsc":
+        sortedVideos = sortedVideos.sort((a, b) => {
+          const dateA = new Date(a.snippet.publishedAt);
+          const dateB = new Date(b.snippet.publishedAt);
+          return dateA.getTime() - dateB.getTime();
+        });
+        break;
+      case "moreViews":
+        sortedVideos = sortedVideos.sort((a, b) => {
+          const viewsA = a.statistics?.viewCount || 0;
+          const viewsB = b.statistics?.viewCount || 0;
+          return viewsB - viewsA;
+        });
+        break;
+      case "lessViews":
+        sortedVideos = sortedVideos.sort((a, b) => {
+          const viewsA = a.statistics?.viewCount || 0;
+          const viewsB = b.statistics?.viewCount || 0;
+          return viewsA - viewsB;
+        });
+        break;
+      default:
+        break;
+    }
+
+    setVideoList(sortedVideos);
+  }, [videos, sortOption]);
 
   return (
     <div>
       <h2>Lista de Vídeos</h2>
-      <button onClick={handleDeleteAll}>Borrar toda la lista</button>
+      <div>
+        <button onClick={handleDeleteAll}>Borrar toda la lista</button>
+        <label>Ordenar por:</label>
+        <select onChange={(e) => handleSortChange(e.target.value)}>
+          <option value="dateDesc">Fecha Descendente</option>
+          <option value="dateAsc">Fecha Ascendente</option>
+          <option value="moreViews">Más Vistas</option>
+          <option value="lessViews">Menos Vistas</option>
+        </select>
+      </div>
       <ul>
         {videoList.map((video) => {
-          console.log("Contenido del video:", video);
           const title = video.snippet.title;
           const publishedAt = video.snippet.publishedAt;
           const viewCount = video.statistics?.viewCount;
