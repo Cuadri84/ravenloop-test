@@ -6,6 +6,7 @@ interface VideoListProps {
 }
 
 const VideoList: React.FC<VideoListProps> = ({ videos }) => {
+  const channelTitle = videos[0].snippet.channelTitle;
   const [videoList, setVideoList] = useState(videos);
   const [sortOption, setSortOption] = useState<string>("dateDesc");
 
@@ -58,6 +59,7 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
 
   return (
     <div>
+      <h1>{channelTitle}</h1>
       <h2>Lista de Vídeos</h2>
       <div>
         <button onClick={handleDeleteAll}>Borrar toda la lista</button>
