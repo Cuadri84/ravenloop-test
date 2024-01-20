@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 import SearchForm from "../components/SearchForm";
 import VideoList from "../components/VideoList";
 import Dashboard from "../components/Dashboard";
-import { getVideosByChannelId } from "../services/api";
+import { searchChannelsAndVideos } from "../services/api"; // Ajusta la importación
 
 const HomePage: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -13,14 +13,12 @@ const HomePage: React.FC = () => {
     setLoggedIn(true);
   };
 
-  const handleSearchResult = async (channels: any[]) => {
-    if (channels.length > 0) {
-      try {
-        const videos = await getVideosByChannelId(channels[0].id.channelId);
-        setSearchResult(videos);
-      } catch (error) {
-        console.error("Error al obtener videos del canal:", error);
-      }
+  const handleSearchResult = async (query: string) => {
+    try {
+      const { channels, videos } = await searchChannelsAndVideos(query);
+      setSearchResult(videos);
+    } catch (error) {
+      console.error("Error al obtener canales y videos:", error);
     }
   };
 

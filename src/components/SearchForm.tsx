@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { searchChannels } from "../services/api";
+import { searchChannelsAndVideos } from "../services/api";
 
 interface SearchFormProps {
-  onSearchResult: (channels: any[]) => void;
+  onSearchResult: (query: string) => void;
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
@@ -10,8 +10,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
 
   const handleSearch = async () => {
     try {
-      const channels = await searchChannels(channelName);
-      onSearchResult(channels);
+      const { videos } = await searchChannelsAndVideos(channelName);
+      onSearchResult(videos);
     } catch (error) {
       console.error("Error en la búsqueda:", error);
     }
