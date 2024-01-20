@@ -73,3 +73,28 @@ export const getVideosByChannelId = async (
     throw error;
   }
 };
+
+//comprobar peticiones al dashboard
+
+// export const getChannelStatistics = async (channelId: string) => {
+//   try {
+//     const response = await fetch(
+//       `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${API_KEY}`
+//     );
+
+//     const data = await response.json();
+
+//     console.log("Response from channel statistics API:", data);
+
+//     if (!response.ok) {
+//       throw new Error(
+//         `Error al obtener estadísticas del canal: ${data.error.message}`
+//       );
+//     }
+
+//     return data.items[0]?.statistics || null;
+//   } catch (error) {
+//     console.error("Error al obtener estadísticas del canal:", error);
+//     throw error;
+//   }
+// };
