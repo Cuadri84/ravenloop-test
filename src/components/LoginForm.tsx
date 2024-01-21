@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ravenImage from "../assets/raven.png";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -25,7 +26,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   return (
     <div className="login-container">
       <div className="login-container__box">
-        <h1 className="login-container__sign-in-text">CEO</h1>
+        <img src={ravenImage} alt="raven" className="login-container__raven" />
         <h1 className="login-container__sign-in-text">Sign In</h1>
 
         <input

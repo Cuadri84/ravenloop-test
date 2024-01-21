@@ -15,6 +15,11 @@
   padding: 60px;
   border-radius: 10px;
 }
+.login-container__raven {
+  height: 100px;
+  width: 80px;
+  background-color: transparent;
+}
 .login-container__sign-in-text {
   color: #00ff00;
   margin-bottom: 40px;
