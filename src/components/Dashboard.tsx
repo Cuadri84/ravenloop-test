@@ -10,11 +10,9 @@ const Dashboard: React.FC<DashboardProps> = ({ videos }) => {
 
   useEffect(() => {
     if (videos.length > 0) {
-      // Obtener el channelId del primer video
       const channelId = videos[0]?.snippet?.channelId;
 
       if (channelId) {
-        // Llamar a la función para obtener las estadísticas del canal
         fetchChannelStatistics(channelId);
       }
     }
@@ -31,13 +29,27 @@ const Dashboard: React.FC<DashboardProps> = ({ videos }) => {
 
   return (
     <div>
-      <h2>Dashboard</h2>
       {channelStatistics && (
-        <div>
-          <p>Visitas totales: {channelStatistics.viewCount}</p>
-          <p>Vídeos subidos: {channelStatistics.videoCount}</p>
-          {/* Otros datos relevantes del canal */}
-        </div>
+        <section className="dashboard">
+          <div className="dashboard__card">
+            <p className="dashboard__card__value">
+              {channelStatistics.viewCount}
+            </p>
+            <p className="dashboard__card__type">Visits</p>
+          </div>
+          <div className="dashboard__card">
+            <p className="dashboard__card__value">
+              {channelStatistics.videoCount}
+            </p>
+            <p className="dashboard__card__type">Videos</p>
+          </div>
+          <div className="dashboard__card">
+            <p className="dashboard__card__value">
+              {channelStatistics.subscriberCount}
+            </p>
+            <p className="dashboard__card__type">Subscribers</p>
+          </div>
+        </section>
       )}
     </div>
   );

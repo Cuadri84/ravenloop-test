@@ -17,6 +17,7 @@
 .login-container__sign-in-text {
   color: #00ff00;
   margin-bottom: 40px;
+  background-color: #272525;
 }
 .login-container__input {
   background-color: #4e4a4a;
@@ -74,6 +75,30 @@
   font-weight: bold;
   border: none;
   cursor: pointer;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.dashboard__card {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+}
+.dashboard__card__value {
+  font-size: 16px;
+  margin: 8px 0;
+  background: #fb3b64;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+.dashboard__card__type {
+  text-align: center;
+  padding: 8px;
+  color: #ffed00;
 }
 
 * {
