@@ -1,0 +1,44 @@
+// LoginForm.scss
+
+.login-container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #272525;
+    padding: 60px;
+    border-radius: 10px;
+  }
+
+  &__sign-in-text {
+    color: #00ff00;
+    margin-bottom: 40px;
+  }
+
+  &__input {
+    background-color: #4e4a4a;
+    color: aliceblue;
+    text-align: center;
+    height: 25px;
+    width: 200px;
+  }
+
+  &__login-box {
+    background-color: #00ff00;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 40px;
+    color: #000000;
+    font-size: larger;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+}

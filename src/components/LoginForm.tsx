@@ -17,14 +17,21 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <label>Password:</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+    <div className="login-container">
+      <div className="login-container__box">
+        <h1 className="login-container__sign-in-text">Sign In</h1>
+
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-container__input"
+        />
+
+        <button onClick={handleLogin} className="login-container__login-box">
+          LOGIN
+        </button>
+      </div>
     </div>
   );
 };
