@@ -25,6 +25,8 @@
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
     margin: 10px;
     list-style: none;
 
@@ -33,17 +35,44 @@
       border-radius: 5px;
       padding: 20px;
       margin-bottom: 20px;
-      height: 400px; /* Puedes ajustar la altura según tus necesidades */
+      max-width: 500px;
+      max-height: 420px;
 
       div {
         background-color: black;
         border-radius: 5px;
-        height: 100%; /* Asegura que el div interno ocupe toda la altura */
+        height: 100%;
       }
 
       p {
         margin: 10px;
         color: white;
+      }
+    }
+  }
+
+  @media (min-width: 1168px) {
+    /* Cambios para pantallas de escritorio (ancho mínimo de 768px) */
+
+    &__name-sort {
+      flex-direction: row;
+
+      h1 {
+        margin-right: 10px;
+      }
+
+      select {
+        margin-bottom: 0;
+      }
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+
+      &__card {
+        margin-right: 20px;
       }
     }
   }

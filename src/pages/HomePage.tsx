@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption] = useState<string>("dateDesc");
   const [hasSearched, setHasSearched] = useState(false); // Nuevo estado
-  const resultsPerPage = 5;
+  const resultsPerPage = 6;
 
   const handleLogin = () => {
     setLoggedIn(true);

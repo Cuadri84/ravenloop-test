@@ -56,8 +56,10 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
   return (
     <section className="video-list">
       <div className="video-list__name-sort">
-        <h5>Channel name:</h5>
-        <h1>{channelTitle}</h1>
+        <div>
+          <h5>Channel name:</h5>
+          <h1>{channelTitle}</h1>
+        </div>
         <div>
           <select onChange={(e) => handleSortChange(e.target.value)}>
             <option value="dateDesc">Recent</option>
