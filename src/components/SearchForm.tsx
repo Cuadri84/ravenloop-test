@@ -44,6 +44,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
             onChange={(e) => setChannelName(e.target.value)}
             onKeyDown={handleKeyDown}
             className="search-container__input"
+            autoFocus
           />
           <button
             onClick={handleSearch}
