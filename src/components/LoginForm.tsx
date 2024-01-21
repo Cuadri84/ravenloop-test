@@ -10,7 +10,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
   const handleLogin = () => {
     //Here verifies the CEO password
-    if (password === "1234") {
+    if (password === "raven") {
       onLogin();
     } else {
       alert("Acceso no autorizado");
