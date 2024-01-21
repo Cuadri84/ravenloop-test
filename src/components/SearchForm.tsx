@@ -18,14 +18,20 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
   };
 
   return (
-    <div>
-      <label>Nombre del Canal:</label>
+    <div className="search-container">
+      <h1 className="search-container__h1">Search Channel</h1>
       <input
         type="text"
         value={channelName}
         onChange={(e) => setChannelName(e.target.value)}
+        className="search-container__input"
       />
-      <button onClick={handleSearch}>Buscar</button>
+      <button
+        onClick={handleSearch}
+        className="search-container__search-button"
+      >
+        SEARCH
+      </button>
     </div>
   );
 };

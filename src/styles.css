@@ -38,11 +38,51 @@
   cursor: pointer;
 }
 
+.home-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.search-container__h1 {
+  color: #00ff00;
+  margin-bottom: 40px;
+}
+.search-container__input {
+  background-color: #4e4a4a;
+  color: aliceblue;
+  text-align: center;
+  height: 25px;
+  width: 200px;
+  margin-bottom: 5px;
+}
+.search-container__search-button {
+  background-color: #00ff00;
+  width: 100px;
+  height: 25px;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0;
   font-family: "Quicksand";
+  color: aliceblue;
+  background-color: black;
 }
 
 body {

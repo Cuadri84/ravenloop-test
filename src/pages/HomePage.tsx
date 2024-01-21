@@ -37,17 +37,14 @@ const HomePage: React.FC = () => {
     currentPage * resultsPerPage
   );
 
-  const handleSortChange = (option: string) => {
-    setSortOption(option);
-  };
-
   return (
-    <div>
+    <div className="home-container">
       {!loggedIn ? (
         <LoginForm onLogin={handleLogin} />
       ) : (
         <>
           <SearchForm onSearchResult={handleSearchResult} />
+          <Dashboard videos={paginatedResults} />
           <VideoList videos={paginatedResults} />
           <div>
             <button
@@ -64,17 +61,6 @@ const HomePage: React.FC = () => {
               Siguiente
             </button>
           </div>
-
-          <div>
-            <label>Ordenar por:</label>
-            <select onChange={(e) => handleSortChange(e.target.value)}>
-              <option value="dateDesc">Fecha Descendente</option>
-              <option value="dateAsc">Fecha Ascendente</option>
-              <option value="moreViews">Más Vistas</option>
-              <option value="lessViews">Menos Vistas</option>
-            </select>
-          </div>
-          <Dashboard />
         </>
       )}
     </div>

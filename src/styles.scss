@@ -1,4 +1,7 @@
+@use "sass/variables";
 @use "sass/loginForm.scss";
+@use "sass/homePage.scss";
+@use "sass/searchForm.scss";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 * {
@@ -6,6 +9,8 @@
   margin: 0 auto;
   padding: 0;
   font-family: "Quicksand";
+  color: aliceblue;
+  background-color: black;
 }
 body {
   min-width: 320px;
