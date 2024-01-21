@@ -10,10 +10,6 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
   const [videoList, setVideoList] = useState(videos);
   const [sortOption, setSortOption] = useState<string>("dateDesc");
 
-  const handleDeleteAll = () => {
-    setVideoList([]);
-  };
-
   const handleSortChange = (option: string) => {
     setSortOption(option);
   };
@@ -58,37 +54,55 @@ const VideoList: React.FC<VideoListProps> = ({ videos }) => {
   }, [videos, sortOption]);
 
   return (
-    <div>
-      <h1>{channelTitle}</h1>
-      <h2>Lista de Vídeos</h2>
-      <div>
-        <button onClick={handleDeleteAll}>Borrar toda la lista</button>
-        <label>Ordenar por:</label>
-        <select onChange={(e) => handleSortChange(e.target.value)}>
-          <option value="dateDesc">Fecha Descendente</option>
-          <option value="dateAsc">Fecha Ascendente</option>
-          <option value="moreViews">Más Vistas</option>
-          <option value="lessViews">Menos Vistas</option>
-        </select>
+    <section className="video-list">
+      <div className="video-list__name-sort">
+        <h5>Channel name:</h5>
+        <h1>{channelTitle}</h1>
+        <div>
+          <select onChange={(e) => handleSortChange(e.target.value)}>
+            <option value="dateDesc">Recent</option>
+            <option value="dateAsc">Oldest</option>
+            <option value="moreViews">More Views</option>
+            <option value="lessViews">Less Views</option>
+          </select>
+        </div>
       </div>
-      <ul>
+      <ul className="video-list__list">
         {videoList.map((video) => {
+          const thumbnailUrl = video.snippet.thumbnails.medium.url;
           const title = video.snippet.title;
           const publishedAt = video.snippet.publishedAt;
           const viewCount = video.statistics?.viewCount;
           const titleHashMD5 = md5(title);
 
           return (
-            <li key={video.id.videoId}>
-              <p>Nombre del Vídeo: {title}</p>
-              <p>Fecha de Subida: {publishedAt}</p>
-              <p>Visitas: {viewCount !== undefined ? viewCount : "N/A"}</p>
-              <p>Hash MD5 del Título: {titleHashMD5}</p>
+            <li key={video.id.videoId} className="video-list__list__card">
+              <div>
+                <img src={thumbnailUrl} alt={`Thumbnail for ${title}`} />
+                <p>
+                  <span style={{ color: "#ffed00" }}>Nombre del Vídeo: </span>
+                  {title}
+                </p>
+                <p>
+                  <span style={{ color: "#ffed00" }}>Fecha de Subida: </span>
+                  {publishedAt}
+                </p>
+                <p>
+                  <span style={{ color: "#ffed00" }}>Visitas: </span>
+                  {viewCount !== undefined ? viewCount : "N/A"}
+                </p>
+                <p>
+                  <span style={{ color: "#ffed00" }}>
+                    Hash MD5 del Título:{" "}
+                  </span>
+                  {titleHashMD5}
+                </p>
+              </div>
             </li>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };
 

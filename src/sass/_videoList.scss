@@ -1,0 +1,48 @@
+@import "variables";
+
+.video-list {
+  &__name-sort {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    h5 {
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      background-color: $background-color;
+      color: white;
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__list {
+    margin: 10px;
+    list-style: none;
+
+    &__card {
+      background-color: $background-color;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      div {
+        background-color: black;
+        border-radius: 5px;
+      }
+
+      p {
+        margin: 10px;
+        color: white;
+      }
+    }
+  }
+}

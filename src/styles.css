@@ -101,6 +101,44 @@
   color: #ffed00;
 }
 
+.video-list__name-sort {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.video-list__name-sort h5 {
+  margin-bottom: 5px;
+}
+.video-list__name-sort h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.video-list__name-sort select {
+  background-color: #4e4a4a;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.video-list__list {
+  margin: 10px;
+  list-style: none;
+}
+.video-list__list__card {
+  background-color: #4e4a4a;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.video-list__list__card div {
+  background-color: black;
+  border-radius: 5px;
+}
+.video-list__list__card p {
+  margin: 10px;
+  color: white;
+}
+
 * {
   box-sizing: border-box;
   margin: 0 auto;

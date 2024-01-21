@@ -74,8 +74,6 @@ export const getVideosByChannelId = async (
   }
 };
 
-// comprobar peticiones al dashboard
-
 export const getChannelStatistics = async (channelId: string) => {
   try {
     const response = await fetch(
