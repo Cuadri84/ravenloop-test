@@ -7,13 +7,17 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = () => {
-    //Here verifies the CEO password
     if (password === "raven") {
       onLogin();
     } else {
-      alert("Acceso no autorizado");
+      setError("Unauthorized Access");
+
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
     }
   };
 
@@ -36,6 +40,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           onKeyDown={handleKeyDown}
           className="login-container__input"
         />
+
+        <div className="login-container__error-container">
+          {error && <p className="login-container__error">{error}</p>}
+        </div>
 
         <button onClick={handleLogin} className="login-container__login-box">
           LOGIN

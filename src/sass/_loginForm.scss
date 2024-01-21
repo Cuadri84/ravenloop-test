@@ -1,4 +1,4 @@
-// LoginForm.scss
+@import "variables";
 
 .login-container {
   background-color: black;
@@ -46,5 +46,14 @@
     font-weight: bold;
     border: none;
     cursor: pointer;
+  }
+  &__error-container {
+    height: 20px;
+    background-color: #272525;
+  }
+  &__error {
+    color: red;
+    background-color: #272525;
+    margin-top: 10px;
   }
 }

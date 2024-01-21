@@ -44,6 +44,15 @@
   border: none;
   cursor: pointer;
 }
+.login-container__error-container {
+  height: 20px;
+  background-color: #272525;
+}
+.login-container__error {
+  color: red;
+  background-color: #272525;
+  margin-top: 10px;
+}
 
 .home-container {
   display: flex;
@@ -97,7 +106,7 @@
   text-align: center;
   height: 25px;
   width: 200px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .search-container__search-button {
   background-color: #00ff00;
