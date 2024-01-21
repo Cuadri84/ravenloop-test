@@ -20,7 +20,7 @@
       color: white;
       border-radius: 5px;
       padding: 5px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
@@ -33,10 +33,12 @@
       border-radius: 5px;
       padding: 20px;
       margin-bottom: 20px;
+      height: 400px; /* Puedes ajustar la altura según tus necesidades */
 
       div {
         background-color: black;
         border-radius: 5px;
+        height: 100%; /* Asegura que el div interno ocupe toda la altura */
       }
 
       p {

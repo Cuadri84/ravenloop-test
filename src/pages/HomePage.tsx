@@ -9,11 +9,17 @@ const HomePage: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortOption, setSortOption] = useState<string>("dateDesc");
+  const [sortOption] = useState<string>("dateDesc");
+  const [hasSearched, setHasSearched] = useState(false); // Nuevo estado
   const resultsPerPage = 5;
 
   const handleLogin = () => {
     setLoggedIn(true);
+  };
+
+  const handlePaginationClick = (newPage: number) => {
+    setCurrentPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleSearchResult = async (channels: any[]) => {
@@ -22,6 +28,7 @@ const HomePage: React.FC = () => {
         const videos = await getVideosByChannelId(channels[0].id.channelId);
         setSearchResult(videos);
         setCurrentPage(1);
+        setHasSearched(true);
       } catch (error) {
         console.error("Error al obtener videos del canal:", error);
       }
@@ -38,29 +45,39 @@ const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="home-container">
+    <div
+      className={`home-container ${
+        !hasSearched ? "home-container__center" : "home-container__top"
+      }`}
+    >
       {!loggedIn ? (
         <LoginForm onLogin={handleLogin} />
       ) : (
         <>
-          <SearchForm onSearchResult={handleSearchResult} />
-          <Dashboard videos={paginatedResults} />
-          <VideoList videos={paginatedResults} />
-          <div>
-            <button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              Anterior
-            </button>
-            <span>Página {currentPage}</span>
-            <button
-              disabled={currentPage * resultsPerPage >= searchResult.length}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Siguiente
-            </button>
-          </div>
+          <SearchForm onSearchResult={handleSearchResult} />{" "}
+          {hasSearched && (
+            <>
+              <Dashboard videos={paginatedResults} />
+              <VideoList videos={paginatedResults} />
+              <div className="home-container__pagination">
+                <button
+                  className="pagination-button"
+                  disabled={currentPage === 1}
+                  onClick={() => handlePaginationClick(currentPage - 1)}
+                >
+                  PREVIOUS
+                </button>
+
+                <button
+                  className="pagination-button"
+                  disabled={currentPage * resultsPerPage >= searchResult.length}
+                  onClick={() => handlePaginationClick(currentPage + 1)}
+                >
+                  NEXT
+                </button>
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

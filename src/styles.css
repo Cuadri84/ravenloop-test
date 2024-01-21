@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 .login-container {
   background-color: black;
@@ -43,7 +44,36 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-bottom: 20px;
+}
+.home-container__center {
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+.home-container__pagination {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.home-container__pagination .pagination-button {
+  background-color: #00ff00;
+  width: 100px;
+  height: 25px;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #ffed00;
+  cursor: pointer;
+}
+
+.home-container__top {
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: auto;
 }
 
 .search-container {
@@ -71,9 +101,9 @@
   border-radius: 5px;
   margin-top: 5px;
   color: #000000;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  border: none;
+  border: 1px solid #ffed00;
   cursor: pointer;
 }
 
@@ -118,7 +148,7 @@
   color: white;
   border-radius: 5px;
   padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .video-list__list {
   margin: 10px;
@@ -129,10 +159,12 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+  height: 400px; /* Puedes ajustar la altura según tus necesidades */
 }
 .video-list__list__card div {
   background-color: black;
   border-radius: 5px;
+  height: 100%; /* Asegura que el div interno ocupe toda la altura */
 }
 .video-list__list__card p {
   margin: 10px;

@@ -1,6 +1,40 @@
+@import "variables";
 .home-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
+  margin-bottom: 20px;
+
+  &__center {
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  &__pagination {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .pagination-button {
+      background-color: $green;
+      width: 100px;
+      height: 25px;
+      border-radius: 5px;
+      margin-top: 5px;
+      color: #000000;
+      font-size: 15px;
+      font-weight: bold;
+      border: 1px solid $yellow;
+      cursor: pointer;
+    }
+  }
+}
+
+//to center at the top
+.home-container__top {
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: auto;
 }
