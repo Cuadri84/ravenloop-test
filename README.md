@@ -1,47 +1,78 @@
-# Getting Started with Create React App
+# YouTube Analytics Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web application allows users to perform analytics on YouTube channels, retrieving data such as video statistics and channel information using the YouTube Data API. The application is built using TypeScript and React.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. **Login Functionality:**
 
-### `npm start`
+   - Access to the app is restricted via a login system. The CEO has a dedicated login using a password.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. **Search for YouTube Channels:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   - Users can search for YouTube channels using a dedicated search form.
 
-### `npm test`
+3. **View Channel Statistics:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - The app provides a dashboard that displays key statistics for a selected YouTube channel.
+   - Statistics include the total number of visits, videos, and subscribers.
 
-### `npm run build`
+4. **List and Paginate Videos:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - Users can view a paginated list of videos for a selected channel.
+   - The list includes information such as video thumbnails, titles, upload dates, and view counts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Sort Videos:**
+   - The video list can be sorted based on various criteria, including recent, oldest, more views, and less views.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+- **React:** The frontend is built using React to create a dynamic and responsive user interface.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **TypeScript:** TypeScript is used to bring static typing to JavaScript, enhancing code maintainability.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Sass:** Styling is implemented using Sass for better organization and maintainability of styles.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **YouTube Data API:** The app leverages the YouTube Data API to fetch channel and video information.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+1. **Clone the Repository:**
+   ```bash
+   git clone [repository_url]
+   cd [repository_folder]
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Install Dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# ravenloop-test
+````bash
+npm install
+
+## Set Up Environment Variables
+
+```bash
+1. Create a `.env` file in the root directory.
+2. Add your YouTube Data API key as `REACT_APP_YOUTUBE_API_KEY=your_api_key`.
+
+## Run the app
+
+```bash
+npm start
+
+The app will be accessible at http://localhost:3000.
+
+## Additional Notes
+
+- **Authentication:**
+  - Only the CEO has access to the application using a password (currently set as "raven").
+
+- **Security:**
+  - Ensure that sensitive information such as API keys is handled securely.
+
+- **Pagination:**
+  - The video list is paginated to enhance user experience.
+
+- **Error Handling:**
+  - The application includes robust error handling for API requests, ensuring a smooth user experience even in case of failures.
+
+````
