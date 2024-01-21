@@ -6,9 +6,11 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ videos }) => {
+  // State for channel statistics
   const [channelStatistics, setChannelStatistics] = useState<any | null>(null);
 
   useEffect(() => {
+    // Effect to fetch channel statistics when videos change
     if (videos.length > 0) {
       const channelId = videos[0]?.snippet?.channelId;
 
@@ -18,18 +20,20 @@ const Dashboard: React.FC<DashboardProps> = ({ videos }) => {
     }
   }, [videos]);
 
+  // Function to fetch channel statistics
   const fetchChannelStatistics = async (channelId: string) => {
     try {
       const statistics = await getChannelStatistics(channelId);
       setChannelStatistics(statistics);
     } catch (error) {
-      console.error("Error al obtener estadísticas del canal:", error);
+      console.error("Error fetching channel statistics:", error);
     }
   };
 
   return (
     <div>
       {channelStatistics && (
+        // Render channel statistics
         <section className="dashboard">
           <div className="dashboard__card">
             <p className="dashboard__card__value">

@@ -1,5 +1,6 @@
 const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
+// Function to search for YouTube channels based on a query
 export const searchChannels = async (
   query: string,
   maxResults: number = 50
@@ -12,16 +13,17 @@ export const searchChannels = async (
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(`Error en la búsqueda de canales: ${data.error.message}`);
+      throw new Error(`Error searching for channels: ${data.error.message}`);
     }
 
     return data.items;
   } catch (error) {
-    console.error("Error en la búsqueda de canales:", error);
+    console.error("Error searching for channels:", error);
     throw error;
   }
 };
 
+// Function to get videos from a YouTube channel based on its ID
 export const getVideosByChannelId = async (
   channelId: string,
   maxResults: number = 50
@@ -35,13 +37,13 @@ export const getVideosByChannelId = async (
 
     if (!response.ok) {
       throw new Error(
-        `Error al obtener videos del canal: ${data.error.message}`
+        `Error fetching videos from channel: ${data.error.message}`
       );
     }
 
     const videoIds = data.items.map((item: any) => item.id.videoId).join(",");
 
-    // to get the statistics
+    // Fetch statistics for the videos
     const statsResponse = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoIds}&key=${API_KEY}`
     );
@@ -50,11 +52,11 @@ export const getVideosByChannelId = async (
 
     if (!statsResponse.ok) {
       throw new Error(
-        `Error al obtener estadísticas de video: ${statsData.error.message}`
+        `Error fetching video statistics: ${statsData.error.message}`
       );
     }
 
-    // Combinar la información de snippet y statistics para cada video
+    // Combine snippet and statistics information for each video
     const videosWithStats = data.items.map((item: any) => {
       const videoId = item.id.videoId;
       const statsInfo = statsData.items.find(
@@ -69,11 +71,12 @@ export const getVideosByChannelId = async (
 
     return videosWithStats;
   } catch (error) {
-    console.error("Error al obtener videos del canal:", error);
+    console.error("Error fetching videos from channel:", error);
     throw error;
   }
 };
 
+// Function to get statistics for a YouTube channel based on its ID
 export const getChannelStatistics = async (channelId: string) => {
   try {
     const response = await fetch(
@@ -82,17 +85,15 @@ export const getChannelStatistics = async (channelId: string) => {
 
     const data = await response.json();
 
-    console.log("Response from channel statistics API:", data);
-
     if (!response.ok) {
       throw new Error(
-        `Error al obtener estadísticas del canal: ${data.error.message}`
+        `Error fetching channel statistics: ${data.error.message}`
       );
     }
 
     return data.items[0]?.statistics || null;
   } catch (error) {
-    console.error("Error al obtener estadísticas del canal:", error);
+    console.error("Error fetching channel statistics:", error);
     throw error;
   }
 };

@@ -1,3 +1,6 @@
+// main.scss
+// This is the main Sass file where all other Sass files are imported.
+// It sets global styles, imports variables, and includes other components.
 @use "sass/variables";
 @use "sass/loginForm.scss";
 @use "sass/homePage.scss";

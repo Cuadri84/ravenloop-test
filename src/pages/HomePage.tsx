@@ -6,22 +6,26 @@ import Dashboard from "../components/Dashboard";
 import { getVideosByChannelId } from "../services/api";
 
 const HomePage: React.FC = () => {
+  // Component states
   const [loggedIn, setLoggedIn] = useState(false);
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption] = useState<string>("dateDesc");
-  const [hasSearched, setHasSearched] = useState(false); // Nuevo estado
+  const [hasSearched, setHasSearched] = useState(false); // New state
   const resultsPerPage = 6;
 
+  // Login handler
   const handleLogin = () => {
     setLoggedIn(true);
   };
 
+  // Pagination click handler
   const handlePaginationClick = (newPage: number) => {
     setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Search result handler
   const handleSearchResult = async (channels: any[]) => {
     if (channels.length > 0) {
       try {
@@ -30,15 +34,12 @@ const HomePage: React.FC = () => {
         setCurrentPage(1);
         setHasSearched(true);
       } catch (error) {
-        console.error("Error al obtener videos del canal:", error);
+        console.error("Error fetching videos from channel:", error);
       }
     }
   };
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [sortOption]);
-
+  // Paginated results
   const paginatedResults = searchResult.slice(
     (currentPage - 1) * resultsPerPage,
     currentPage * resultsPerPage
