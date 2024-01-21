@@ -16,6 +16,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-container__box">
@@ -26,6 +32,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="login-container__input"
         />
 

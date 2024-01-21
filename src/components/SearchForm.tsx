@@ -17,6 +17,12 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="search-container">
       <h1 className="search-container__h1">Search Channel</h1>
@@ -24,6 +30,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearchResult }) => {
         type="text"
         value={channelName}
         onChange={(e) => setChannelName(e.target.value)}
+        onKeyDown={handleKeyDown}
         className="search-container__input"
       />
       <button
